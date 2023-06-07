@@ -8,7 +8,7 @@ const Header = () => {
       <li><Link to='/instrutor'>Instructors</Link></li>
       <li><Link to='/classes'>Classes</Link></li>
       <li><Link>Dashboard</Link></li>
-     <button className="btn btn-outline btn-xs text-white">logIn</button>
+     <Link to='/login'><button className="btn btn-outline btn-xs text-white">logIn</button></Link>
     </>
   return (
     <div className="navbar fixed z-10 bg-opacity-30 text-white bg-gray-600">
