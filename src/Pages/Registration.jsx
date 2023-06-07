@@ -2,9 +2,23 @@ import React from 'react';
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../public/login.json";
 import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
 const Registration = () => {
-    const { register, handleSubmit,  formState: { errors } } = useForm();
+  const validationSchema = Yup.object().shape({
+    password: Yup.string()
+        .required('Password is required')
+        .min(6, 'Password must be at least 6 characters')
+        .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,'Password must contain at least one lowercase letter, one uppercase letter,  one digit and one special character'
+        ),
+    confirmPassword: Yup.string()
+        .required('Confirm Password is required')
+        .oneOf([Yup.ref('password')], 'Passwords must match')
+        
+});
+   const formOptions = { resolver: yupResolver(validationSchema) };
+    const { register, handleSubmit,  formState: { errors } } = useForm(formOptions);
     const onSubmit = data => console.log(data);
 
 
@@ -64,7 +78,7 @@ const Registration = () => {
                 placeholder="Enter your password"
                 className="input input-bordered"
               />
-              {errors.password && <span className="text-red-500">Password is required</span>}
+              {errors.password && <span className="text-red-500">Password must contain at least one lowercase letter, one uppercase letter,  one digit and one special character</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -72,11 +86,11 @@ const Registration = () => {
               </label>
               <input
                 type="password"
-                {...register("password", { required: true })}
+                {...register("confirmPassword", { required: true })}
                 placeholder="Enter your password"
                 className="input input-bordered"
               />
-              {errors.password && <span className="text-red-500">Password is required</span>}
+               {errors.confirmPassword && <span className="text-red-500">Passwords must match</span>}
             </div>
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Sign Up" />
