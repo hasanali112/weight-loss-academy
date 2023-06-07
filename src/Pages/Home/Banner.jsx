@@ -20,7 +20,7 @@ const Banner = () => {
               you how to lose body fat, gain confidence, increase energy and
               create a healthier relationship with food
             </p>
-            <button className="btn bg-[#de6d72] border-0 md:btn-wide md:ml-[450px] ml-4 md:rounded-full">
+            <button className="btn bg-[#de6d72] btn-primary border-0 md:btn-wide md:ml-[450px] ml-4 md:rounded-full">
               Join Us
             </button>
           </div>
