@@ -2,11 +2,12 @@ import React from "react";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../public/login.json";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
     const { register, handleSubmit,  formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+    const onSubmit = data => console.log(data);
 
 
 
@@ -47,6 +48,7 @@ const Login = () => {
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
           </form>
+          <h4>Have a new in Acadamy?<Link to='/registration'>Sign Up</Link></h4>
         </div>
       </div>
     </div>
