@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../public/login.json";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { AuthContext } from '../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
+import { FaEye } from 'react-icons/fa';
 
 const Registration = () => {
+  const{createUser, userUpdate} = useContext(AuthContext)
+  const [show, setShow] = useState(false)
+  const[showPass, setShowPass] = useState(false)
+
   const validationSchema = Yup.object().shape({
     password: Yup.string()
         .required('Password is required')
@@ -18,8 +25,26 @@ const Registration = () => {
         
 });
    const formOptions = { resolver: yupResolver(validationSchema) };
-    const { register, handleSubmit,  formState: { errors } } = useForm(formOptions);
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit, reset,  formState: { errors } } = useForm(formOptions);
+    
+    const onSubmit = data => {
+      createUser(data.email, data.password)
+      .then(result=>{
+        const createdUser = result.user;
+        console.log(createdUser)
+        userUpdate(data.name, data.photo)
+        .then(()=>{
+          reset()
+        })
+        .catch(error=>{
+          console.log(error)
+        })
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+      
+    };
 
 
 
@@ -73,11 +98,12 @@ const Registration = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="Password"
+                 type={show ? 'text' : 'password'}
                 {...register("password", { required: true })}
                 placeholder="Enter your password"
                 className="input input-bordered"
               />
+               <FaEye onClick={()=> setShow(!show)} className="-mt-8  ml-[350px]"></FaEye>
               {errors.password && <span className="text-red-500">Password must contain at least one lowercase letter, one uppercase letter,  one digit and one special character</span>}
             </div>
             <div className="form-control">
@@ -85,16 +111,18 @@ const Registration = () => {
                 <span className="label-text">Confirm password</span>
               </label>
               <input
-                type="password"
+                type={showPass ? 'text' : 'password'}
                 {...register("confirmPassword", { required: true })}
                 placeholder="Enter your password"
                 className="input input-bordered"
               />
+               <FaEye onClick={()=> setShowPass(!showPass)} className="-mt-8 ml-[350px]"></FaEye>
                {errors.confirmPassword && <span className="text-red-500">Passwords must match</span>}
             </div>
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Sign Up" />
             </div>
+            <h3>Already have an account? Please <Link className='text-green-500' to='/login'>LogIn</Link></h3>
           </form>
         </div>
       </div>

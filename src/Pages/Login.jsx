@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../public/login.json";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import { FaEye } from 'react-icons/fa';
 
 
 const Login = () => {
-    const { register, handleSubmit,  formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const {loginUser} = useContext(AuthContext)
+    const [show, setShow] = useState(false)
+    const { register, handleSubmit, reset,  formState: { errors } } = useForm();
+    const onSubmit = data => {
+      loginUser(data.email, data.password)
+      .then(result=>{
+        const loggedUser = result.user;
+        console.log(loggedUser)
+        reset()
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+    };
 
 
 
@@ -37,18 +51,19 @@ const Login = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
+                type={show ? 'text' : 'password'}
                 {...register("password", { required: true })}
                 placeholder="password"
                 className="input input-bordered"
               />
+              <FaEye onClick={()=> setShow(!show)} className="-mt-8 ml-72"></FaEye>
               {errors.password && <span className="text-red-500">Password is required</span>}
             </div>
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
           </form>
-          <h4>Have a new in Acadamy?<Link to='/registration'>Sign Up</Link></h4>
+          <h4 className="text-center mb-4">New in Acadamy? <Link to='/registration' className="text-green-500">Sign Up</Link></h4>
         </div>
       </div>
     </div>
