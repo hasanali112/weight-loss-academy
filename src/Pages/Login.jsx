@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../../public/login.json";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FaEye } from 'react-icons/fa';
 
@@ -10,6 +10,12 @@ import { FaEye } from 'react-icons/fa';
 const Login = () => {
     const {loginUser} = useContext(AuthContext)
     const [show, setShow] = useState(false)
+    const location = useLocation();
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
+
+
+
     const { register, handleSubmit, reset,  formState: { errors } } = useForm();
     const onSubmit = data => {
       loginUser(data.email, data.password)
@@ -17,6 +23,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser)
         reset()
+        navigate(from, { replace: true });
       })
       .catch(error=>{
         console.log(error)

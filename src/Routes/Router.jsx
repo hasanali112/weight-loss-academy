@@ -6,6 +6,8 @@ import Classes from "../Pages/Classes";
 import Error from "../Pages/Error";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
+import PrivateRoutes from "./PrivateRoutes";
+import DashBoard from "../LayOut/DashBoard";
 
 
 
@@ -37,4 +39,8 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path:'dashboard',
+      element:<PrivateRoutes><DashBoard></DashBoard></PrivateRoutes>
+    }
   ]);
