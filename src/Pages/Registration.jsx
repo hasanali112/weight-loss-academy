@@ -5,14 +5,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { AuthContext } from "../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const Registration = () => {
   const { createUser, userUpdate } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [showPass, setShowPass] = useState(false);
+  const location = useLocation()
+  const navigate = useNavigate()
 
   const validationSchema = Yup.object().shape({
     password: Yup.string()
@@ -60,6 +63,7 @@ const Registration = () => {
                     showConfirmButton: false,
                     timer: 1500,
                   });
+                  navigate('/', {state:{from:location}})
                 }
               });
             reset();
@@ -185,13 +189,14 @@ const Registration = () => {
                 value="Sign Up"
               />
             </div>
-            <h3>
+            <h3 >
               Already have an account? Please
               <Link className="text-green-500" to="/login">
                 LogIn
               </Link>
             </h3>
           </form>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

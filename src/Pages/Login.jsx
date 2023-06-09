@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FaEye } from 'react-icons/fa';
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 
 const Login = () => {
@@ -70,6 +71,7 @@ const Login = () => {
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
           </form>
+           <SocialLogin></SocialLogin>
           <h4 className="text-center mb-4">New in Acadamy? <Link to='/registration' className="text-green-500">Sign Up</Link></h4>
         </div>
       </div>
