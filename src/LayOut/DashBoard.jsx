@@ -1,7 +1,7 @@
 import React from "react";
 import logo from '../assets/image/logo.png'
 import { Link, Outlet } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaRegPlusSquare, FaRegUser, FaUserCheck, FaUserCog, FaUserFriends, FaUsersCog, } from "react-icons/fa";
 
 
 const DashBoard = () => {
@@ -31,12 +31,12 @@ const DashBoard = () => {
           </div>
           <div className="divider bg-white h-1"></div>
           <li><Link><FaHome></FaHome>Home</Link></li>
-          <li><Link to='/dashboard/myselectedclasses'>My Selected Classes</Link></li>
-          <li><Link to='/dashboard/myenrolledclasses'>My Enrolled Classes</Link></li>
-          <li><Link to='/dashboard/addaclass'>Add a Class</Link></li>
-          <li><Link to='/dashboard/myclass'>My Classes</Link></li>
-          <li><Link to='/dashboard/manageclasses'>Manage Classes</Link></li>
-          <li><Link to='/dashboard/manageusers'>Manage Users</Link></li>
+          <li><Link to='/dashboard/myselectedclasses'><FaUserFriends></FaUserFriends> My Selected Classes</Link></li>
+          <li><Link to='/dashboard/myenrolledclasses'><FaUserCheck></FaUserCheck>  My Enrolled Classes</Link></li>
+          <li><Link to='/dashboard/addaclass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>
+          <li><Link to='/dashboard/myclass'><FaRegUser></FaRegUser> My Classes</Link></li>
+          <li><Link to='/dashboard/manageclasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
+          <li><Link to='/dashboard/manageusers'><FaUsersCog></FaUsersCog> Manage Users</Link></li>
           <div className="divider bg-white h-1"></div>
         </ul>
       </div>
