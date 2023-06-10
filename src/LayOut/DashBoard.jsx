@@ -8,6 +8,7 @@ import useAdmin from "../hooks/useAdmin";
 const DashBoard = () => {
   const [isAdmin] = useAdmin();
   // const isAdmin = true;
+  const isInstructor = true;
 
   return (
     <div className="drawer lg:drawer-open">
@@ -40,12 +41,16 @@ const DashBoard = () => {
              <li><Link><FaHome></FaHome>Admin Home</Link></li>
              <li><Link to='/dashboard/manageclasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
               <li><Link to='/dashboard/manageusers'><FaUsersCog></FaUsersCog> Manage Users</Link></li>
+            </>:isInstructor ?
+            <>
+            <li><Link><FaHome></FaHome>Instuctor Home</Link></li>
+            <li><Link to='/dashboard/addaclass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>
+            <li><Link to='/dashboard/myclass'><FaRegUser></FaRegUser> My Classes</Link></li>
+            
             </> : <>
             <li><Link><FaHome></FaHome>Student Home</Link></li>
             <li><Link to='/dashboard/myselectedclasses'><FaUserFriends></FaUserFriends> My Selected Classes</Link></li>
             <li><Link to='/dashboard/myenrolledclasses'><FaUserCheck></FaUserCheck>  My Enrolled Classes</Link></li>
-            <li><Link to='/dashboard/addaclass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>
-            <li><Link to='/dashboard/myclass'><FaRegUser></FaRegUser> My Classes</Link></li>
             </>
           }
           <div className="divider bg-white h-1"></div>
