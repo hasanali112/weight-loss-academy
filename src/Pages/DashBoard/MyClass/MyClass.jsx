@@ -13,24 +13,27 @@ const MyClass = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-2 gap-12">
+      <div className="grid grid-cols-2 gap-12 mt-10 mb-10">
         {
-            allClass.map(cl=> <div key={cl._id} className="card w-96 bg-base-100 shadow-xl">
+            allClass.map(cl=> <div key={cl._id} className="card w-96 bg-gray-200 shadow-xl">
             <figure>
               <img
                 src={cl.photoUrl}
-                alt="Shoes"
+                alt="weight loss"
+                className="p-3"
               />
             </figure>
-            <div className="card-body">
-              <h2 className="card-title">{cl.className}</h2>
-              <p>{cl.instructorName}</p>
-              <p>{cl.email}</p>
-              <p>Price: ${cl.price}</p>
-              <p>Available seat: {cl.availableSeat}</p>
-              <p>Status: {cl.status}</p>
+            <div className="ml-5">
+              <h2 className="text-2xl font-bold">{cl.className}</h2>
+              <p className="text-xl font-semibold">{cl.instructorName}</p>
+              <p className="text-base font-semibold text-gray-500 mt-2">{cl.email}</p>
+               <div className="flex space-x-3">
+               <p className="text-base font-semibold text-gray-500">Price: ${cl.price}</p>
+               <p className="text-base font-semibold text-gray-500">Available seat: {cl.availableSeat}</p>
+               </div>
+              <p className="text-base font-semibold text-gray-500">Status: {cl.status}</p>
               <div className="card-actions">
-                <button className="btn btn-primary">Update</button>
+                <button className="btn btn-primary mb-8 mt-2">Update</button>
               </div>
             </div>
           </div>)

@@ -30,7 +30,8 @@ export const router = createBrowserRouter([
         },
         {
           path:'instrutor',
-          element:<Instrutors></Instrutors>
+          element:<Instrutors></Instrutors>,
+          loader:()=> fetch ('http://localhost:5000/ourinstructor')
         },
         {
           path:'classes',

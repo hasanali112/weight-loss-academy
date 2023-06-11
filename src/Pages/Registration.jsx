@@ -44,7 +44,7 @@ const Registration = () => {
         console.log(createdUser);
         userUpdate(data.name, data.photo)
           .then(() => {
-            const userSave = { name: data.name, email: data.email };
+            const userSave = { name: data.name, email: data.email , photoUrl:data.photo };
             fetch("http://localhost:5000/users", {
               method: "POST",
               headers: {

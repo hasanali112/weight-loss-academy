@@ -59,8 +59,7 @@ const ManageClass = () => {
 
     return (
         <div>
-            <h1>Manage Class</h1>
-            <div className="grid grid-cols-2 gap-12">
+            <div className="grid grid-cols-2 gap-12 mt-10">
         {
             manageClass.map(cl=> <div key={cl._id} className="card w-96 bg-base-100 shadow-xl">
             <figure>
