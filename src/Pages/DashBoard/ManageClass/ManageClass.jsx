@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const ManageClass = () => {
@@ -78,7 +79,7 @@ const ManageClass = () => {
               <div className="card-actions">
                 <button onClick={()=> handlApproved(cl._id)} className="btn btn-primary"> Approve</button>
                 <button onClick={()=>  handlDenied (cl._id)} className="btn btn-primary">Deny</button>
-                <button className="btn btn-primary">send feedback</button>
+                <Link to='/dashboard/feedback'>  <button className="btn btn-primary">send feedback</button></Link>
               </div>
             </div>
           </div>)

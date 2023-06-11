@@ -14,6 +14,7 @@ import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
 import ManageClass from "../Pages/DashBoard/ManageClass/ManageClass";
 import MySelectedClass from "../Pages/DashBoard/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/DashBoard/MyEnrolledClass/MyEnrolledClass";
+import FeedBack from "../Pages/DashBoard/FeedBack/FeedBack";
 
 
 
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
         {
           path:'manageusers',
           element:<ManageUser></ManageUser>
+        },
+        {
+          path:'feedback',
+          element:<FeedBack></FeedBack>
         },
         //  Instrutors routes
         {
