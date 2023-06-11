@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const MyClass = () => {
     const [allClass, setAllClass]= useState([])
+    console.log(allClass)
 
     useEffect(()=>{
         fetch('http://localhost:5000/allclasses')

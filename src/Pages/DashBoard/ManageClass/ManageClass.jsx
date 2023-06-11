@@ -9,7 +9,7 @@ const ManageClass = () => {
         fetch('http://localhost:5000/allclasses')
         .then(res=> res.json())
         .then(data=> setManageClass(data))
-    },[])
+    },[manageClass])
 
    //status change
    const handlApproved = id =>{
