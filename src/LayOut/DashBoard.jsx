@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from '../assets/image/logo.png'
 import { Link, Outlet } from "react-router-dom";
 import { FaHome, FaRegPlusSquare, FaRegUser, FaUserCheck, FaUserCog, FaUserFriends, FaUsersCog, } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
+import banner from '../assets/image/banner4.jpg'
+import Cover from "../Pages/DashBoard/Cover/Cover";
+
 
 
 const DashBoard = () => {
   const [isAdmin] = useAdmin();
+ 
   // const isAdmin = true;
   const isInstructor = true;
+ 
 
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
+         <Cover image={banner} title={isAdmin  ? 'Admin DashBorad' : isInstructor ? 'Instructor Dashboard' : 'Student Dashboard'}></Cover>
         <Outlet></Outlet>
         <label
           htmlFor="my-drawer-2"
@@ -41,7 +47,7 @@ const DashBoard = () => {
              <li><Link><FaHome></FaHome>Admin Home</Link></li>
              <li><Link to='/dashboard/manageclasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
               <li><Link to='/dashboard/manageusers'><FaUsersCog></FaUsersCog> Manage Users</Link></li>
-            </>:isInstructor ?
+            </>: isInstructor ?
             <>
             <li><Link><FaHome></FaHome>Instuctor Home</Link></li>
             <li><Link to='/dashboard/addaclass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>

@@ -9,13 +9,29 @@ const AddAClass = () => {
     
       const onSubmit = (data) =>{
         console.log(data)
+        const instrutorClass ={
+            instructorName: user.displayName,
+            email:user.email,
+            className: data.class,
+            photoUrl:data.photo,
+            availableSeat: parseFloat (data.seat),
+            price: parseFloat(data.price),
+            status:'pending'
+        }
+        fetch('http://localhost:5000/classes',{
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(instrutorClass)
+        })
+        .then(res=> res.json())
+        .then(data=>{
+            console.log(data)
+        })
       }
   return (
     <div className="w-full h-full">
-      <div id="title" className="h-40 p-10">
-           <h1 className="text-4xl font-bold text-center w-1/2 mx-auto bg-white bg-opacity-30 p-3">Add A Class</h1>
-      </div>
-     
       <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0 w-full mr-10  shadow-2xl">
@@ -49,7 +65,8 @@ const AddAClass = () => {
               />
             </div>
              </div>
-            <div className="form-control">
+               <div  className="grid grid-cols-2 gap-5">
+               <div className="form-control">
               <label className="label">
                 <span className="label-text">Photo Url</span>
               </label>
@@ -59,7 +76,19 @@ const AddAClass = () => {
                 placeholder="Enter your photo url"
                 className="input input-bordered"
               />
+            </div>   
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">CLass Name</span>
+              </label>
+              <input
+                type="text"
+                {...register("class", { required: true })}
+                placeholder="Enter your photo url"
+                className="input input-bordered"
+              />
             </div>
+               </div>
              <div className="grid grid-cols-2 gap-5">
              <div className="form-control">
               <label className="label">
