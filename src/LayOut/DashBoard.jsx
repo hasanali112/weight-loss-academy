@@ -4,6 +4,7 @@ import { FaHome, FaRegPlusSquare, FaRegUser, FaUserCheck, FaUserCog, FaUserFrien
 import useAdmin from "../hooks/useAdmin";
 import banner from '../assets/image/banner4.jpg'
 import Cover from "../Pages/DashBoard/Cover/Cover";
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -17,7 +18,11 @@ const isInstructor = false
  
 
   return (
-    <div className="drawer lg:drawer-open">
+  <div>
+        <Helmet>
+            <title>Dashboard - Weight Loss Academy</title>
+        </Helmet>
+      <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
@@ -65,6 +70,7 @@ const isInstructor = false
         </ul>
       </div>
     </div>
+  </div>
   );
 };
 

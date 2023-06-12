@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const ManageUser = () => {
     const[axiosSecure]=useAxiosSecure()
@@ -75,6 +76,9 @@ const ManageUser = () => {
 
     return (
         <div>
+           <Helmet>
+                <title>Manage Users - Weight Loss Academy</title>
+            </Helmet>
             <h1>Manage user: {users.length}</h1>
 
             <div className="overflow-x-auto">

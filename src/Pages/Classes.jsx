@@ -2,12 +2,16 @@ import {  useLoaderData} from 'react-router-dom';
 import BannarCover from './BannerCover/BannarCover';
 import bannerCover from '../../src/assets/image/banner3.jpg';
 import ClassCard from '../comoponent/ClassCard';
+import { Helmet } from 'react-helmet-async';
 
 const Classes = () => {
     const loadAllClasses= useLoaderData()
    
     return (
         <div>
+             <Helmet>
+                <title>Classes- Weight Loss Academy</title>
+            </Helmet>
            <BannarCover
            image={bannerCover}
            title='Explore Our Best Classes'

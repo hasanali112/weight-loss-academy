@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MyClassCard from '../MyClassCard/MyClassCard';
+import { Helmet } from 'react-helmet-async';
 
 const MySelectedClass = () => {
     const [myClasses, setMyClasses] = useState([])
@@ -11,7 +12,11 @@ const MySelectedClass = () => {
         .then(data=> setMyClasses(data))
     },[])
     return (
-        <div className='mt-20 mb-10'>
+       <div>
+            <Helmet>
+                <title>My Selected Class - Weight Loss Academy</title>
+            </Helmet>
+         <div className='mt-20 mb-10'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
                 {
                     myClasses.map(myClass=> <MyClassCard
@@ -21,6 +26,7 @@ const MySelectedClass = () => {
                 }
             </div>
         </div>
+       </div>
     );
 };
 

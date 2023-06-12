@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import './AddAClass.css'
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddAClass = () => {
     const{user}= useContext(AuthContext)
@@ -31,7 +32,11 @@ const AddAClass = () => {
         })
       }
   return (
-    <div className="w-full h-full">
+    <div>
+       <Helmet>
+                <title>Add A Class - Weight Loss Academy</title>
+            </Helmet>
+      <div className="w-full h-full">
       <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="card flex-shrink-0 w-full mr-10  shadow-2xl">
@@ -123,6 +128,7 @@ const AddAClass = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const MyClass = () => {
     const [allClass, setAllClass]= useState([])
@@ -13,6 +14,9 @@ const MyClass = () => {
 
   return (
     <div>
+            <Helmet>
+                <title>My Class - Weight Loss Academy</title>
+            </Helmet>
       <div className="grid grid-cols-2 gap-12 mt-10 mb-10">
         {
             allClass.map(cl=> <div key={cl._id} className="card w-96 bg-gray-200 shadow-xl">

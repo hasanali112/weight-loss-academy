@@ -9,11 +9,11 @@ const Features = () => {
     <div>
         <h1 className="text-gray-900 text-5xl font-bold text-center mt-20">Our Speciality</h1>
         <p className="text-gray-500 text-2xl font-semibold text-center mb-10 mt-3">Explore this feaute and lead a healthy life</p>
-      <div className="flex flex-col md:flex-row md:space-x-4  md:ml-6">
-        <div className="card w-96 h-96 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px] mb-2">
+      <div className="flex flex-col md:flex-row md:space-x-4 mx-3  md:mx-24">
+        <div className="card w-80 h-80 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px] mb-2">
           <div className="card-body text-center">
-            <img src={card1} alt="" className="w-20 ml-32" />
-            <h2 className="text-center text-white text-4xl font-bold ">
+            <img src={card1} alt="" className="w-14 ml-24" />
+            <h2 className="text-center text-white text-3xl font-bold ">
               Group Fitness
             </h2>
             <p className="text-white text-base font-semibold">
@@ -28,10 +28,10 @@ const Features = () => {
             </div>
           </div>
         </div>
-        <div className="card w-96 h-96 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px] mb-2">
+        <div className="card w-80 h-80 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px] mb-2">
           <div className="card-body text-center">
-            <img src={card2} alt="" className="w-20 ml-32" />
-            <h2 className="text-center text-white text-4xl font-bold ">
+            <img src={card2} alt="" className="w-14 ml-24" />
+            <h2 className="text-center text-white text-3xl font-bold ">
               WORKOUTS
             </h2>
             <p className="text-white text-base font-semibold">
@@ -46,10 +46,10 @@ const Features = () => {
             </div>
           </div>
         </div>
-        <div className="card w-96 h-96 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px]">
+        <div className="card w-80 h-80 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px]">
           <div className="card-body text-center">
-            <img src={card3} alt="" className="w-20 ml-32" />
-            <h2 className="text-center text-white text-4xl font-bold ">
+            <img src={card3} alt="" className="w-14 ml-24" />
+            <h2 className="text-center text-white text-3xl font-bold ">
               Nutrition & Diet
             </h2>
             <p className="text-white text-base font-semibold">

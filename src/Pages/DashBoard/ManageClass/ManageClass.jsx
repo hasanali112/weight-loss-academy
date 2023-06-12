@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -59,6 +60,9 @@ const ManageClass = () => {
 
     return (
         <div>
+           <Helmet>
+                <title>Manage Class - Weight Loss Academy</title>
+            </Helmet>
             <div className="grid grid-cols-2 gap-12 mt-10">
         {
             manageClass.map(cl=> <div key={cl._id} className="card w-96 bg-base-100 shadow-xl">
