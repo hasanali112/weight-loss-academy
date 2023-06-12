@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
         // student routes
         {
           path:'myselectedclasses',
-          element:<MySelectedClass></MySelectedClass>
+          element:<PrivateRoutes><MySelectedClass></MySelectedClass></PrivateRoutes> 
         },
         {
           path:'myenrolledclasses',

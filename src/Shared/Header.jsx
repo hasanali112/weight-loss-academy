@@ -22,7 +22,7 @@ const Header = () => {
         user ?<>
         <li><Link to='/dashboard'>Dashboard</Link></li>
         <><a data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName}>
-           <img src={user.photoURL}  alt="" className="rounded-full mr-2 w-10"/>
+           <img src={user.photoURL} referrerpolicy="no-referrer"  alt="" className="rounded-full mr-2 w-10"/>
          </a> <Tooltip id="my-tooltip" /></>
          <button onClick={handleLogOut} className="btn btn-outline btn-xs text-white">Log Out</button>
         </>:<>

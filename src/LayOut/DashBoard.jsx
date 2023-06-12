@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import logo from '../assets/image/logo.png'
 import { Link, Outlet } from "react-router-dom";
 import { FaHome, FaRegPlusSquare, FaRegUser, FaUserCheck, FaUserCog, FaUserFriends, FaUsersCog, } from "react-icons/fa";
@@ -8,11 +7,13 @@ import Cover from "../Pages/DashBoard/Cover/Cover";
 
 
 
+
 const DashBoard = () => {
   const [isAdmin] = useAdmin();
- 
-  // const isAdmin = true;
-  const isInstructor = true;
+
+const isInstructor = false
+  
+  
  
 
   return (

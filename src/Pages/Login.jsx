@@ -11,6 +11,7 @@ import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 const Login = () => {
     const {loginUser} = useContext(AuthContext)
     const [show, setShow] = useState(false)
+    const [error, setError] = useState('')
     const location = useLocation();
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || "/";
@@ -27,7 +28,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch(error=>{
-        console.log(error)
+        setError(error.message)
       })
     };
 
@@ -70,6 +71,7 @@ const Login = () => {
             <div className="form-control mt-6">
               <input className="btn btn-primary" type="submit" value="Login" />
             </div>
+            <h4 className="text-red-500 font-bold">{error}</h4>
           </form>
            <SocialLogin></SocialLogin>
           <h4 className="text-center mb-4">New in Acadamy? <Link to='/registration' className="text-green-500">Sign Up</Link></h4>
