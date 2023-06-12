@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import BannarCover from "./BannerCover/BannarCover";
 import banner from "../../src/assets/image/banner3.jpg";
 import { useLoaderData } from "react-router-dom";

@@ -14,10 +14,13 @@ const Registration = () => {
   const { createUser, userUpdate } = useContext(AuthContext);
   const [show, setShow] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const location = useLocation()
-  const navigate = useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string("Email is required").required(),
+    photo: Yup.string("PhotoURL is required").required(),
     password: Yup.string()
       .required("Password is required")
       .min(6, "Password must be at least 6 characters")
@@ -44,7 +47,11 @@ const Registration = () => {
         console.log(createdUser);
         userUpdate(data.name, data.photo)
           .then(() => {
-            const userSave = { name: data.name, email: data.email , photoUrl:data.photo };
+            const userSave = {
+              name: data.name,
+              email: data.email,
+              photoUrl: data.photo,
+            };
             fetch("http://localhost:5000/users", {
               method: "POST",
               headers: {
@@ -63,7 +70,7 @@ const Registration = () => {
                     showConfirmButton: false,
                     timer: 1500,
                   });
-                  navigate('/', {state:{from:location}})
+                  navigate("/", { state: { from: location } });
                 }
               });
             reset();
@@ -99,11 +106,13 @@ const Registration = () => {
                 {...register("name", { required: true })}
                 name="name"
                 placeholder="Enter your name"
-                className="input input-bordered"
+                className={`input input-bordered form-control ${
+                  errors.name ? "is-invalid" : ""
+                }`}
               />
-              {errors.name?.type === "required" && (
-                <p className="text-red-600 pt-4">Name is required</p>
-              )}
+              <div className="invalid-feedback text-red-500 pt-1 ">
+                {errors.name?.message}
+              </div>
             </div>
             <div className="form-control">
               <label className="label">
@@ -113,11 +122,13 @@ const Registration = () => {
                 type="email"
                 {...register("email", { required: true })}
                 placeholder="Enter your email"
-                className="input input-bordered"
+                className={`input input-bordered form-control ${
+                  errors.email ? "is-invalid" : ""
+                }`}
               />
-              {errors.email?.type === "required" && (
-                <p className="text-red-600 pt-4">Email is required</p>
-              )}
+              <div className="invalid-feedback text-red-500 pt-1 ">
+                {errors.email?.message}
+              </div>
             </div>
             <div className="form-control">
               <label className="label">
@@ -127,11 +138,13 @@ const Registration = () => {
                 type="text"
                 {...register("photo", { required: true })}
                 placeholder="Enter your photo url"
-                className="input input-bordered"
+                className={`input input-bordered form-control ${
+                  errors.photo ? "is-invalid" : ""
+                }`}
               />
-              {errors.password && (
-                <span className="text-red-500">Photo url is required</span>
-              )}
+              <div className="invalid-feedback text-red-500 pt-1 ">
+                {errors.photo?.message}
+              </div>
             </div>
             <div className="form-control">
               <label className="label">
@@ -145,17 +158,21 @@ const Registration = () => {
                   pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/,
                 })}
                 placeholder="password"
-                className="input input-bordered"
+                className={`input input-bordered form-control ${
+                  errors.password ? "is-invalid" : ""
+                }`}
               />
               <FaEye
                 onClick={() => setShow(!show)}
                 className="-mt-8  ml-[350px]"
               ></FaEye>
-              {errors.password?.type === "required" && (
-                <p className="text-red-600 pt-4">Password is required</p>
-              )}
+              <div className="invalid-feedback text-red-500 pt-3 ">
+                {errors.password?.message}
+              </div>
               {errors.password?.type === "minLength" && (
-                <p className="text-red-600 pt-4">Password must be 6 characters</p>
+                <p className="text-red-600 pt-4">
+                  Password must be 6 characters
+                </p>
               )}
               {errors.password?.type === "pattern" && (
                 <p className="text-red-600 pt-4">
@@ -172,15 +189,17 @@ const Registration = () => {
                 type={showPass ? "text" : "password"}
                 {...register("confirmPassword", { required: true })}
                 placeholder="Enter your password"
-                className="input input-bordered"
+                className={`input input-bordered form-control ${
+                  errors.password ? "is-invalid" : ""
+                }`}
               />
               <FaEye
                 onClick={() => setShowPass(!showPass)}
                 className="-mt-8 ml-[350px]"
               ></FaEye>
-              {errors.confirmPassword && (
-                <span className="text-red-500 pt-4">Passwords must match</span>
-              )}
+              <div className="invalid-feedback text-red-500 pt-3 ">
+                {errors.password?.message}
+              </div>
             </div>
             <div className="form-control mt-6">
               <input
@@ -189,7 +208,7 @@ const Registration = () => {
                 value="Sign Up"
               />
             </div>
-            <h3 >
+            <h3>
               Already have an account? Please
               <Link className="text-green-500" to="/login">
                 LogIn
