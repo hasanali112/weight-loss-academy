@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Banner from '../Banner';
 import Features from '../Features/Features';
 import HelpNeed from '../HelpNeed/HelpNeed';
@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import PopularInstructor from '../PopularInstrutor/PopularInstructor';
 
 const Home = () => {
+   
     return (
         <div>
             <Helmet>

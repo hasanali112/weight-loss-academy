@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 
 const Classes = () => {
     const loadAllClasses= useLoaderData()
+    console.log(loadAllClasses)
    
     return (
         <div>

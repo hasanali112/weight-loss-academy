@@ -1,117 +1,113 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import Swal from 'sweetalert2';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { Helmet } from 'react-helmet-async';
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const ManageUser = () => {
-    const[axiosSecure]=useAxiosSecure()
-    const {data: users= [], refetch} = useQuery(['users'], async()=>{
-      const res = await axiosSecure.get('/users')
-      return res.data;
+  const [axiosSecure] = useAxiosSecure();
+  const { data: users = [], refetch } = useQuery(["users"], async () => {
+    const res = await axiosSecure.get("/users");
+    return res.data;
+  });
+
+  const handleMakeAdmin = (user) => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: "PATCH",
     })
-
-   const [disabled, setDisabled] = useState(false)
-   const [instrutorDisabled, setInstrutorDisabled] = useState(false)
-
-    
-
-    const handleMakeAdmin = user =>{
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
-            method: 'PATCH'
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.modifiedCount){
-                refetch();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: `${user.name} is an Admin Now!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-            }
-        })
-        handleClick(user._id);
-    }
-
-
-    const handleMakeInstrutor = user =>{
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
-            method: 'PATCH'
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            if(data.modifiedCount){
-                refetch();
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: `${user.name} is an Instructor Now!`,
-                    showConfirmButton: false,
-                    timer: 1500
-                  })
-                  handleInstructor()  
-            }
-          
-        })
-    }
-
-    const handleClick = (id) => {
-        // setDisabled(true);
-        if(id){
-          setDisabled(true)
-          console.log(id) 
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
-       };
+      });
+    handleClick(user._id);
+  };
 
-    const handleInstructor = () => {
-        setInstrutorDisabled(true);
-        console.log('button clicked');
-       };
-  
+  const handleMakeInstrutor = (user) => {
+    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Instructor Now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          handleInstructor();
+        }
+      });
+  };
 
-    return (
-        <div>
-           <Helmet>
-                <title>Manage Users - Weight Loss Academy</title>
-            </Helmet>
-            <h1>Manage user: {users.length}</h1>
+  return (
+    <div>
+      <Helmet>
+        <title>Manage Users - Weight Loss Academy</title>
+      </Helmet>
+      <h1>Manage user: {users.length}</h1>
 
-            <div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {
-        users.map((user, index)=>
-            <tr key={user._id}>
-        <th>{index + 1}</th>
-        <td>{user.name}</td>
-        <td>{user.email}</td>
-        <td>{user.role === 'admin' ? 'Admin' : user.role === 'instructor' ? 'Instructor' : 'Student'}</td>
-        <td><button disabled={disabled}  onClick={() =>handleMakeAdmin(user) } className="btn btn-primary btn-sm">Admin</button> <button disabled={instrutorDisabled} onClick={() => handleMakeInstrutor(user)} className="btn btn-neutral btn-sm">Instrutor</button></td>
-      
-      </tr>
-        )
-      }
-      
-    </tbody>
-  </table>
-</div>
-        </div>
-    );
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, index) => (
+              <tr key={user._id}>
+                <th>{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>
+                  {user.role === "admin"
+                    ? "Admin"
+                    : user.role === "instructor"
+                    ? "Instructor"
+                    : "Student"}
+                </td>
+                <td>
+                  <button
+                    disabled={user.role === "admin"}
+                    onClick={() => handleMakeAdmin(user)}
+                    className="btn btn-primary btn-sm"
+                  >
+                    Admin
+                  </button>
+                  <button
+                    disabled={user.role === "instrutor"}
+                    onClick={() => handleMakeInstrutor(user)}
+                    className="btn btn-neutral btn-sm"
+                  >
+                    Instrutor
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default ManageUser;

@@ -15,6 +15,7 @@ import ManageClass from "../Pages/DashBoard/ManageClass/ManageClass";
 import MySelectedClass from "../Pages/DashBoard/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/DashBoard/MyEnrolledClass/MyEnrolledClass";
 import FeedBack from "../Pages/DashBoard/FeedBack/FeedBack";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 
 
 
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
         {
           path:'myselectedclasses',
           element:<PrivateRoutes><MySelectedClass></MySelectedClass></PrivateRoutes> 
+        },
+        {
+          path:'enroll',
+          element:<Payment></Payment>
         },
         {
           path:'myenrolledclasses',

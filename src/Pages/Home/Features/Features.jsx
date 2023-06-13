@@ -3,10 +3,12 @@ import card1 from "../../../assets/image/card1.png";
 import card2 from "../../../assets/image/card2.png";
 import card3 from "../../../assets/image/card3.png";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import {  Flip } from "react-awesome-reveal";
 
 const Features = () => {
   return (
     <div>
+        <Flip>
         <h1 className="text-gray-900 text-5xl font-bold text-center mt-20">Our Speciality</h1>
         <p className="text-gray-500 text-2xl font-semibold text-center mb-10 mt-3">Explore this feaute and lead a healthy life</p>
       <div className="flex flex-col md:flex-row md:space-x-4 mx-3  md:mx-24">
@@ -65,6 +67,7 @@ const Features = () => {
           </div>
         </div>
       </div>
+      </Flip>
     </div>
   );
 };

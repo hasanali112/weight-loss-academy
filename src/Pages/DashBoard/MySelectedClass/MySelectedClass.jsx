@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import MyClassCard from '../MyClassCard/MyClassCard';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 
 const MySelectedClass = () => {
     const [myClasses, setMyClasses] = useState([])
@@ -19,10 +19,25 @@ const MySelectedClass = () => {
          <div className='mt-20 mb-10'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
                 {
-                    myClasses.map(myClass=> <MyClassCard
-                    key={myClass._id}
-                    item={myClass}
-                    ></MyClassCard>)
+                    myClasses.map(myClass=>  <div key={myClass._id} className="card w-80 bg-gray-200 rounded-none shadow-lg">
+                    <figure>
+                      <img
+                        src={myClass.image}
+                        alt="classImage"
+                        className="p-2"
+                      />
+                    </figure>
+                    <div className="card-body">
+                      <h2 className="card-title">{myClass.className}</h2>
+                      <p>{myClass.instructorName}</p>
+                      <p>Available: {myClass.availableSeat}</p>
+                      <p>Price: ${myClass.price}</p>
+                      <div className="card-actions">
+                       <Link state={myClass} to="/dashboard/enroll"><button className="btn btn-primary btn-xs">Enrol Now</button></Link>
+                        <button className="btn btn-primary btn-xs">Delete</button>
+                      </div>
+                    </div>
+                  </div>)
                 }
             </div>
         </div>

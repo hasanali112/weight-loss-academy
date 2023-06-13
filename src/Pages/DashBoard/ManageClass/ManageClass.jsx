@@ -65,23 +65,23 @@ const ManageClass = () => {
             </Helmet>
             <div className="grid grid-cols-2 gap-12 mt-10">
         {
-            manageClass.map(cl=> <div key={cl._id} className="card w-96 bg-base-100 shadow-xl">
+            manageClass.map(clManage=> <div key={clManage._id} className="card w-96 bg-base-100 shadow-xl">
             <figure>
               <img
-                src={cl.photoUrl}
+                src={clManage.photoUrl}
                 alt="Shoes"
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{cl.className}</h2>
-              <p>{cl.instructorName}</p>
-              <p>{cl.email}</p>
-              <p>Price: ${cl.price}</p>
-              <p>Available seat: {cl.availableSeat}</p>
-              <p>Status: {cl.status === 'approve' ? 'Approved' : cl.status === 'deny' ? 'Denied' : 'Pending'}</p>
+              <h2 className="card-title">{clManage.className}</h2>
+              <p>{clManage.instructorName}</p>
+              <p>{clManage.email}</p>
+              <p>Price: ${clManage.price}</p>
+              <p>Available seat: {clManage.availableSeat}</p>
+              <p>Status: {clManage.status === 'approve' ? 'Approved' : clManage.status === 'deny' ? 'Denied' : 'Pending'}</p>
               <div className="card-actions">
-                <button onClick={()=> handlApproved(cl._id)} className="btn btn-primary"> Approve</button>
-                <button onClick={()=>  handlDenied (cl._id)} className="btn btn-primary">Deny</button>
+                <button disabled={clManage.status === 'approve' && 'deny'} onClick={()=> handlApproved(clManage._id)} className="btn btn-primary"> Approve</button>
+                <button disabled={clManage.status === 'approve' && 'deny'} onClick={()=>  handlDenied (clManage._id)} className="btn btn-primary">Deny</button>
                 <Link to='/dashboard/feedback'>  <button className="btn btn-primary">send feedback</button></Link>
               </div>
             </div>
