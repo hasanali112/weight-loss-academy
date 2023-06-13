@@ -86,7 +86,8 @@ export const router = createBrowserRouter([
         },
         {
           path:'myenrolledclasses',
-          element:<MyEnrolledClass></MyEnrolledClass>
+          element:<MyEnrolledClass></MyEnrolledClass>,
+          loader:()=> fetch('http://localhost:5000/entrolledclasses')
         }
       ]
     }
