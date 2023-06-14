@@ -7,14 +7,14 @@ const ManageClass = () => {
     const [manageClass, setManageClass]= useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allclasses')
+        fetch('https://weight-loss-server.vercel.app/allclasses')
         .then(res=> res.json())
         .then(data=> setManageClass(data))
     },[manageClass])
 
    //status change
    const handlApproved = id =>{
-    fetch(`http://localhost:5000/class/approve/${id}`, {
+    fetch(`https://weight-loss-server.vercel.app/class/approve/${id}`, {
         method: 'PATCH'
     })
     .then(res => res.json())
@@ -33,7 +33,7 @@ const ManageClass = () => {
     })
    }
    const handlDenied = id =>{
-    fetch(`http://localhost:5000/class/deny/${id}`, {
+    fetch(`https://weight-loss-server.vercel.app/class/deny/${id}`, {
         method: 'PATCH'
     })
     .then(res => res.json())

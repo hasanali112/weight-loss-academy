@@ -4,6 +4,7 @@ import Features from '../Features/Features';
 import HelpNeed from '../HelpNeed/HelpNeed';
 import { Helmet } from 'react-helmet-async';
 import PopularInstructor from '../PopularInstrutor/PopularInstructor';
+import PopularClass from '../PopularClass/PopularClass';
 
 const Home = () => {
    
@@ -14,6 +15,7 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <Features></Features>
+            <PopularClass></PopularClass>
             <PopularInstructor></PopularInstructor>
             <HelpNeed></HelpNeed>
         </div>

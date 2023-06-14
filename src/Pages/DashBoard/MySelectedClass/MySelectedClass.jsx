@@ -1,16 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MySelectedClass = () => {
     const [myClasses, setMyClasses] = useState([])
     console.log(myClasses)
 
     useEffect(()=>{
-        fetch('http://localhost:5000/myclasses')
+        fetch('https://weight-loss-server.vercel.app/myclasses')
         .then(res=> res.json())
         .then(data=> setMyClasses(data))
     },[])
+
+
+
+    const handleDelete = (id) => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`https://weight-loss-server.vercel.app/selected-class/${id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.deletedCount > 0) {
+                Swal.fire("Deleted!", "Your toy has been deleted.", "success");
+                const remaining = myClasses.filter(myCl => myCl._id !== id)
+                setMyClasses(remaining)
+              }
+            });
+        }
+      });
+    };
+
     return (
        <div>
             <Helmet>
@@ -34,7 +65,7 @@ const MySelectedClass = () => {
                       <p>Price: ${myClass.price}</p>
                       <div className="card-actions">
                        <Link state={myClass} to="/dashboard/enroll"><button className="btn btn-primary btn-xs">Enrol Now</button></Link>
-                        <button className="btn btn-primary btn-xs">Delete</button>
+                        <button onClick={()=> handleDelete(myClass._id)} className="btn btn-primary btn-xs">Delete</button>
                       </div>
                     </div>
                   </div>)

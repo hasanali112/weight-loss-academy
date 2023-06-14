@@ -15,9 +15,6 @@ const DashBoard = () => {
   const [isInstrutor] = useInstrutor()
 
 
-  
-  
-
   return (
   <div>
         <Helmet>
@@ -49,22 +46,28 @@ const DashBoard = () => {
           </div>
           <div className="divider bg-white h-1"></div>
 
-          {
-            isAdmin ? <><li><Link><FaHome></FaHome>Admin Home</Link></li>
-            <li><Link to='/dashboard/manageclasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
-             <li><Link to='/dashboard/manageusers'><FaUsersCog></FaUsersCog> Manage Users</Link></li></> :
-             
-             isInstrutor ?
-             <><li><Link><FaHome></FaHome>Instuctor Home</Link></li>
+          {isInstrutor && !isAdmin ? (
+    <>
+      <li><Link><FaHome></FaHome>Instuctor Home</Link></li>
              <li><Link to='/dashboard/addaclass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>
              <li><Link to='/dashboard/myclass'><FaRegUser></FaRegUser> My Classes</Link></li></> 
-             
-             :
-             <> <li><Link><FaHome></FaHome>Student Home</Link></li>
+   
+  ) : isAdmin ? (
+    <>
+      <li><Link><FaHome></FaHome>Admin Home</Link></li>
+            <li><Link to='/dashboard/manageclasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
+             <li><Link to='/dashboard/manageusers'><FaUsersCog></FaUsersCog> Manage Users</Link></li>
+    </>
+  ) : (
+    <>
+      {/* Content when isInsta is false and isAdmin is false */}
+      <li><Link><FaHome></FaHome>Student Home</Link></li>
              <li><Link to='/dashboard/myselectedclasses'><FaUserFriends></FaUserFriends> My Selected Classes</Link></li>
              <li><Link to='/dashboard/myenrolledclasses'><FaUserCheck></FaUserCheck>  My Enrolled Classes</Link></li>
-             <li><Link to='/dashboard/paymenthistory'><FaWallet></FaWallet>  My Payment History</Link></li></> 
-          }
+             <li><Link to='/dashboard/paymenthistory'><FaWallet></FaWallet>  My Payment History</Link></li>
+    </>
+  )}
+
           <div className="divider bg-white h-1"></div>
           <li><Link to='/'><FaHome></FaHome>Home</Link></li>
         </ul>
@@ -75,3 +78,5 @@ const DashBoard = () => {
 };
 
 export default DashBoard;
+
+

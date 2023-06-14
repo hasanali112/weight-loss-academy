@@ -24,7 +24,7 @@ const ClassCard = ({ item }) => {
     };
     console.log(selectedClass);
     if (user) {
-      fetch("http://localhost:5000/myselectedclass", {
+      fetch("https://weight-loss-server.vercel.app/myselectedclass", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -45,9 +45,6 @@ const ClassCard = ({ item }) => {
           }
         });
     }
-    else if(message){
-      Swal.fire('Already exsist')
-    } 
     else {
       Swal.fire({
         title: "Please log in",

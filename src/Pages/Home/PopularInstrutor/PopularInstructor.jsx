@@ -5,7 +5,7 @@ const PopularInstructor = () => {
     const [populars, setPopulars] =useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/popularinstructor')
+        fetch('https://weight-loss-server.vercel.app/popularinstructor')
         .then(res=> res.json())
         .then(data=> setPopulars(data))
     },[])

@@ -16,7 +16,7 @@ const SocialLogin = () => {
             console.log(googleUsered)
             
             const userSave = { name: googleUsered.displayName, email: googleUsered.email };
-            fetch("http://localhost:5000/users", {
+            fetch("https://weight-loss-server.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

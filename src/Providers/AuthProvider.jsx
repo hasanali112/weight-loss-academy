@@ -47,7 +47,7 @@ const AuthProvider = ({children}) => {
             console.log(current)
             setUser(current)
             if(current){
-                axios.post('http://localhost:5000/jwt', {email: current.email})
+                axios.post('https://weight-loss-server.vercel.app/jwt', {email: current.email})
                 .then(data=>{
                     localStorage.setItem('access-token', data.data.token)
                     setLoading(false)

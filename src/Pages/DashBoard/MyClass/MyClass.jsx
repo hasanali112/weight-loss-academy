@@ -5,21 +5,28 @@ const MyClass = () => {
     const [allClass, setAllClass]= useState([])
     console.log(allClass)
 
-    const [totalEnroll, setTotalEnroll] = useState([])
-    console.log(totalEnroll)
+    const [totalEnroll, setTotalEnroll] = useState(0)
+    
+    
+    
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allclasses')
+        fetch('https://weight-loss-server.vercel.app/allclasses')
         .then(res=> res.json())
         .then(data=> setAllClass(data))
     },[])
 
 
     useEffect(()=>{
-      fetch('http://localhost:5000/payment/count')
-      .then(res=> res.json())
-      .then(data=> setTotalEnroll(data))
+      fetch('https://weight-loss-server.vercel.app/payment/count')
+      .then((res) => res.json())
+      .then(data=>{ 
+        const count = data && data.length > 0 ? data[0].count : 0;
+        setTotalEnroll(count);
+       })
     },[])
+
+ 
 
 
   return (
@@ -46,7 +53,10 @@ const MyClass = () => {
                <p className="text-base font-semibold text-gray-500">Available seat: {cl.availableSeat}</p>
                </div>
               <p className="text-base font-semibold text-gray-500">Status: {cl.status}</p>
+              <p className="text-base font-semibold text-gray-500">Total Enroll:{0? 0: totalEnroll } </p>
+              <p className="text-base font-semibold text-gray-500">Feedback:{cl?.feedback} </p>
               <div className="card-actions">
+                
                 <button className="btn btn-primary mb-8 mt-2">Update</button>
               </div>
             </div>

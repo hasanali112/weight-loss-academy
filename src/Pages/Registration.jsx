@@ -52,8 +52,9 @@ const Registration = () => {
               name: data.name,
               email: data.email,
               photoUrl: data.photo,
+              role:'student'
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://weight-loss-server.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

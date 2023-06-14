@@ -33,12 +33,12 @@ export const router = createBrowserRouter([
         {
           path:'instrutor',
           element:<Instrutors></Instrutors>,
-          loader:()=> fetch ('http://localhost:5000/ourinstructor')
+          loader:()=> fetch ('https://weight-loss-server.vercel.app/ourinstructor')
         },
         {
           path:'classes',
           element:<Classes></Classes>,
-          loader: ()=> fetch('http://localhost:5000/ourclasses')
+          loader: ()=> fetch('https://weight-loss-server.vercel.app/ourclasses')
         },
         {
           path:'login',
@@ -88,12 +88,12 @@ export const router = createBrowserRouter([
         {
           path:'myenrolledclasses',
           element:<MyEnrolledClass></MyEnrolledClass>,
-          loader:()=> fetch('http://localhost:5000/entrolledclasses')
+          loader:()=> fetch('https://weight-loss-server.vercel.app/entrolledclasses')
         },
         {
           path:'paymenthistory',
           element:<PaymentHistory></PaymentHistory>,
-          loader:()=> fetch('http://localhost:5000/enrollhistory')
+          loader:()=> fetch('https://weight-loss-server.vercel.app/enrollhistory')
         }
       ]
     }

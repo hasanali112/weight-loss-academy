@@ -6,7 +6,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000', 
+    baseURL: 'https://weight-loss-server.vercel.app', 
   });
 
 const useAxiosSecure = () => {
@@ -37,6 +37,5 @@ const useAxiosSecure = () => {
 };
 
 export default useAxiosSecure;
-
 
 

@@ -7,7 +7,7 @@ const FeedBack = () => {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch('http://localhost:5000/allclasses')
+        fetch('https://weight-loss-server.vercel.app/allclasses')
         .then(res=> res.json())
         .then(data=> setFeedbackClass(data))
     },[])
@@ -16,7 +16,7 @@ const FeedBack = () => {
   const onSubmit = data => {
     const adminFeedback ={feedback:data.feedback}
     console.log(data)
-    fetch(`http://localhost:5000/feedback/${feedbackClass[0]._id}`, {
+    fetch(`https://weight-loss-server.vercel.app/feedback/${feedbackClass[0]._id}`, {
         method:'PATCH',
         headers:{
             'content-type' : 'application/json'

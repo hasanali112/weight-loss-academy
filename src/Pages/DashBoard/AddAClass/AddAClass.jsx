@@ -19,7 +19,7 @@ const AddAClass = () => {
             price: parseFloat(data.price),
             status:'pending'
         }
-        fetch('http://localhost:5000/classes',{
+        fetch('https://weight-loss-server.vercel.app/classes',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'
