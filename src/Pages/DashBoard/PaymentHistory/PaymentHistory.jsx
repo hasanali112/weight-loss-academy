@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const PaymentHistory = () => {
-  const historyPayment = useLoaderData();
+  const [historyPayment, setHistoryPayment] = useState([]);
+  const {user} = useContext(AuthContext)
+
+  useEffect(()=>{
+    fetch(`https://weight-loss-server.vercel.app/enrollhistory/${user?.email}`)
+    .then(res=> res.json())
+    .then(data=> setHistoryPayment(data))
+  },[])
+
+
+
   return (
     <div>
       <div className="overflow-x-auto">

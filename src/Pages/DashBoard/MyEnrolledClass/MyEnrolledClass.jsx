@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const MyEnrolledClass = () => {
-    const entrolledClasses = useLoaderData()
+    const [entrolledClasses, setEtrolledClasses] = useState([])
+    const {user} = useContext(AuthContext)
+
+    useEffect(()=>{
+      fetch(`https://weight-loss-server.vercel.app/entrolledclasses/${user?.email}`)
+      .then(res=> res.json())
+      .then(data=> setEtrolledClasses(data))
+  },[])
+
 
 
     return (
@@ -28,9 +37,6 @@ const MyEnrolledClass = () => {
                    <p className="text-base font-semibold text-gray-500">Price: ${entrolledClasse.price}</p>
                    <p className="text-base font-semibold text-gray-500">Available seat: {entrolledClasse.availableSeat}</p>
                    </div>
-                  <div className="card-actions">
-                    <button className="btn btn-primary mb-8 mt-2">Update</button>
-                  </div>
                 </div>
               </div>)
             }

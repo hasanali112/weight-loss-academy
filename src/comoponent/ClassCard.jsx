@@ -21,6 +21,7 @@ const ClassCard = ({ item }) => {
       price: price,
       availableSeat: availableSeat,
       instructorName,
+      email: user?.email
     };
     console.log(selectedClass);
     if (user) {

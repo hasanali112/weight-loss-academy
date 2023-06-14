@@ -77,6 +77,7 @@ const CheckOutForm = ({enrollItem}) => {
               availableSeat, 
               instructorName, 
               enrollClassId:classItemId,
+              date : new Date(),
               enrollItemId: _id
             }
             axiosSecure.post("/payment", payment)

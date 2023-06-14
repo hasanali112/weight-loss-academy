@@ -88,12 +88,10 @@ export const router = createBrowserRouter([
         {
           path:'myenrolledclasses',
           element:<MyEnrolledClass></MyEnrolledClass>,
-          loader:()=> fetch('https://weight-loss-server.vercel.app/entrolledclasses')
         },
         {
           path:'paymenthistory',
           element:<PaymentHistory></PaymentHistory>,
-          loader:()=> fetch('https://weight-loss-server.vercel.app/enrollhistory')
         }
       ]
     }
