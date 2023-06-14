@@ -1,16 +1,18 @@
 import logo from '../assets/image/logo.png'
 import { Link, Outlet } from "react-router-dom";
-import { FaHome, FaRegPlusSquare, FaRegUser, FaUserCheck, FaUserCog, FaUserFriends, FaUsersCog, } from "react-icons/fa";
+import { FaHome, FaRegPlusSquare, FaRegUser, FaUserCheck, FaUserCog, FaUserFriends, FaUsersCog, FaWallet, } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
 import banner from '../assets/image/banner4.jpg'
 import Cover from "../Pages/DashBoard/Cover/Cover";
 import { Helmet } from 'react-helmet-async';
+import useInstrutor from '../hooks/useInstrutor';
 
 
 
 
 const DashBoard = () => {
   const [isAdmin] = useAdmin();
+  const [isInstrutor] = useInstrutor()
 
 
   
@@ -48,27 +50,20 @@ const DashBoard = () => {
           <div className="divider bg-white h-1"></div>
 
           {
-            isAdmin?.role=== 'admin'&& <>
-             <li><Link><FaHome></FaHome>Admin Home</Link></li>
-             <li><Link to='/dashboard/manageclasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
-              <li><Link to='/dashboard/manageusers'><FaUsersCog></FaUsersCog> Manage Users</Link></li>
-            </>
-            }
-            
-            
-            
-            {isAdmin?.role=== 'instrutor' && <>
-            <li><Link><FaHome></FaHome>Instuctor Home</Link></li>
-            <li><Link to='/dashboard/addaclass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>
-            <li><Link to='/dashboard/myclass'><FaRegUser></FaRegUser> My Classes</Link></li>
-            </>
-            }    
-            
-            {isAdmin?.role=== 'student'&& (<>
-            <li><Link><FaHome></FaHome>Student Home</Link></li>
-            <li><Link to='/dashboard/myselectedclasses'><FaUserFriends></FaUserFriends> My Selected Classes</Link></li>
-            <li><Link to='/dashboard/myenrolledclasses'><FaUserCheck></FaUserCheck>  My Enrolled Classes</Link></li>
-            </>)
+            isAdmin ? <><li><Link><FaHome></FaHome>Admin Home</Link></li>
+            <li><Link to='/dashboard/manageclasses'><FaUserCog></FaUserCog>  Manage Classes</Link></li>
+             <li><Link to='/dashboard/manageusers'><FaUsersCog></FaUsersCog> Manage Users</Link></li></> :
+             
+             isInstrutor ?
+             <><li><Link><FaHome></FaHome>Instuctor Home</Link></li>
+             <li><Link to='/dashboard/addaclass'><FaRegPlusSquare></FaRegPlusSquare> Add a Class</Link></li>
+             <li><Link to='/dashboard/myclass'><FaRegUser></FaRegUser> My Classes</Link></li></> 
+             
+             :
+             <> <li><Link><FaHome></FaHome>Student Home</Link></li>
+             <li><Link to='/dashboard/myselectedclasses'><FaUserFriends></FaUserFriends> My Selected Classes</Link></li>
+             <li><Link to='/dashboard/myenrolledclasses'><FaUserCheck></FaUserCheck>  My Enrolled Classes</Link></li>
+             <li><Link to='/dashboard/paymenthistory'><FaWallet></FaWallet>  My Payment History</Link></li></> 
           }
           <div className="divider bg-white h-1"></div>
           <li><Link to='/'><FaHome></FaHome>Home</Link></li>

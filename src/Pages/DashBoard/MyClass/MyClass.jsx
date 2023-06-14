@@ -5,10 +5,20 @@ const MyClass = () => {
     const [allClass, setAllClass]= useState([])
     console.log(allClass)
 
+    const [totalEnroll, setTotalEnroll] = useState([])
+    console.log(totalEnroll)
+
     useEffect(()=>{
         fetch('http://localhost:5000/allclasses')
         .then(res=> res.json())
         .then(data=> setAllClass(data))
+    },[])
+
+
+    useEffect(()=>{
+      fetch('http://localhost:5000/payment/count')
+      .then(res=> res.json())
+      .then(data=> setTotalEnroll(data))
     },[])
 
 

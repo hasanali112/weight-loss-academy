@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
@@ -29,7 +29,6 @@ const ManageUser = () => {
           });
         }
       });
-    handleClick(user._id);
   };
 
   const handleMakeInstrutor = (user) => {
@@ -48,7 +47,6 @@ const ManageUser = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          handleInstructor();
         }
       });
   };
