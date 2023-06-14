@@ -18,4 +18,4 @@
 * node.js
 * MongoDB (database)
 
-#### Live site link:
+#### Live site link: https://weight-loss-academy-9316a.web.app/
