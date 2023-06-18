@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const PaymentHistory = () => {
@@ -7,7 +6,7 @@ const PaymentHistory = () => {
   const {user} = useContext(AuthContext)
 
   useEffect(()=>{
-    fetch(`https://weight-loss-server.vercel.app/enrollhistory/${user?.email}`)
+    fetch(`http://localhost:5000/enrollhistory/${user.email}`)
     .then(res=> res.json())
     .then(data=> setHistoryPayment(data))
   },[])

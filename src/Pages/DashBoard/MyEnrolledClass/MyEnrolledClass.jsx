@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { useEffect } from 'react';
 
 const MyEnrolledClass = () => {
     const [entrolledClasses, setEtrolledClasses] = useState([])
     const {user} = useContext(AuthContext)
 
-    useEffect(()=>{
-      fetch(`https://weight-loss-server.vercel.app/entrolledclasses/${user?.email}`)
+    useEffect(() => {
+      fetch(`http://localhost:5000/entrolledclasses/${user.email}`)
       .then(res=> res.json())
       .then(data=> setEtrolledClasses(data))
   },[])
