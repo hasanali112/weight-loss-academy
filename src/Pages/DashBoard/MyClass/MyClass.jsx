@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const MyClass = () => {
     const [allClass, setAllClass]= useState([])
     console.log(allClass)
 
     const [totalEnroll, setTotalEnroll] = useState(0)
+    const {user}= useContext(AuthContext)
     
     
     
 
     useEffect(()=>{
-        fetch('https://weight-loss-server.vercel.app/allclasses')
+        fetch(`http://localhost:5000/allclasses/${user?.email}`)
         .then(res=> res.json())
         .then(data=> setAllClass(data))
     },[])

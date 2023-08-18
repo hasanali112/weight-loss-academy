@@ -17,7 +17,7 @@ const Instrutors = () => {
         subTitle="Explore our world class Instrutors"
       ></BannarCover>
 
-      <div className="grid grid-cols-1 md:grid-cols-3  md:ml-20 mb-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6  md:mx-20 mb-10">
         {loaderInstritor.map((instrutor) => (
           <div key={instrutor._id} className="card w-80 bg-gray-200 shadow-xl">
             <figure>
