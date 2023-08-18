@@ -8,66 +8,56 @@ import {  Flip } from "react-awesome-reveal";
 const Features = () => {
   return (
     <div>
-        <Flip>
-        <h1 className="text-gray-900 text-5xl font-bold text-center mt-20">Our Speciality</h1>
-        <p className="text-gray-500 text-2xl font-semibold text-center mb-10 mt-3">Explore this feaute and lead a healthy life</p>
-      <div className="flex flex-col md:flex-row md:space-x-4 mx-3  md:mx-24">
-        <div className="card w-80 h-80 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px] mb-2">
+       
+        <h1 className="text-black text-4xl font-sans font-bold ml-14 border-b-2 border-b-[#73523a] mr-[930px] mt-32">Our Speciality</h1>
+        <hr className="mx-14"/>
+      <div className="flex flex-col md:flex-row md:space-x-9 md:space-y-0 space-y-5 mx-14  md:mx-16 mt-4">
+        <div className="card w-60 h-60 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... text-primary-content rounded-md mb-2">
           <div className="card-body text-center">
-            <img src={card1} alt="" className="w-14 ml-24" />
-            <h2 className="text-center text-white text-3xl font-bold ">
+            <img src={card1} alt="" className="w-14 ml-14" />
+            <h2 className="text-center text-white text-xl font-bold ">
               Group Fitness
             </h2>
-            <p className="text-white text-base font-semibold">
+            <p className="text-white text-base">
               We offer signature fitness classes including HIIT, Barre, Mat
-              Pilates, Boxing and Martial Arts, Zumba, Treadmill Running, Pool
-              workouts and more
+              Pilates and more
             </p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-circle btn-outline">
-                <FaArrowAltCircleRight />
-              </button>
-            </div>
           </div>
         </div>
-        <div className="card w-80 h-80 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px] mb-2">
+        <div className="card w-60 h-60 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... text-primary-content rounded-md mb-2">
           <div className="card-body text-center">
-            <img src={card2} alt="" className="w-14 ml-24" />
-            <h2 className="text-center text-white text-3xl font-bold ">
+            <img src={card2} alt="" className="w-14 ml-14" />
+            <h2 className="text-center text-white text-xl font-bold ">
               WORKOUTS
             </h2>
-            <p className="text-white text-base font-semibold">
+            <p className="text-white">
               Discover our range of world-class group fitness workouts below.
-              The full-body weights workout, BODYPUMP is for anyone looking to
-              get lean, toned
             </p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-circle btn-outline">
-                <FaArrowAltCircleRight />
-              </button>
-            </div>
           </div>
         </div>
-        <div className="card w-80 h-80 bg-[rgb(224,91,97)] hover:bg-[#e3333b] text-primary-content rounded-[50px]">
+        <div className="card w-60 h-60 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... text-primary-content rounded-md">
           <div className="card-body text-center">
-            <img src={card3} alt="" className="w-14 ml-24" />
-            <h2 className="text-center text-white text-3xl font-bold ">
+            <img src={card3} alt="" className="w-14 ml-14" />
+            <h2 className="text-center text-white text-xl font-bold ">
               Nutrition & Diet
             </h2>
-            <p className="text-white text-base font-semibold">
-              The best nutrition courses provide comprehensive knowledge and
-              skills about food, health, cooking, and more within a specific
-              context
+            <p className="text-white">
+              This courses provide comprehensive knowledge and skills within a specific context.
             </p>
-            <div className="card-actions justify-center">
-              <button className="btn btn-circle btn-outline">
-                <FaArrowAltCircleRight />
-              </button>
-            </div>
+          </div>
+        </div>
+        <div className="card w-60 h-60 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ... text-primary-content rounded-md">
+          <div className="card-body text-center">
+            <img src={card2} alt="" className="w-14 ml-14" />
+            <h2 className="text-center text-white text-xl font-bold ">
+              Daily food habbit
+            </h2>
+            <p className="text-white">
+              This courses provide comprehensive knowledge and skills within a specific context.
+            </p>
           </div>
         </div>
       </div>
-      </Flip>
     </div>
   );
 };
