@@ -5,6 +5,7 @@ import HelpNeed from '../HelpNeed/HelpNeed';
 import { Helmet } from 'react-helmet-async';
 import PopularInstructor from '../PopularInstrutor/PopularInstructor';
 import PopularClass from '../PopularClass/PopularClass';
+import SubBanner from '../SubBanner/SubBanner';
 
 const Home = () => {
    
@@ -14,6 +15,7 @@ const Home = () => {
                 <title>Home - Weight Loss Academy</title>
             </Helmet>
             <Banner></Banner>
+            <SubBanner></SubBanner>
             <Features></Features>
             <PopularClass></PopularClass>
             <PopularInstructor></PopularInstructor>
